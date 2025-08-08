@@ -4519,6 +4519,58 @@ class Game {
 
 window.version = '0.99.2';
 window.game = new Game();
+// Keyboard controls for Rubik's Cube
+document.addEventListener('keydown', (event) => {
+    if (!game || !game.controls || game.controls.enabled !== true) return;
+
+    const key = event.key.toLowerCase();
+    const ccw = event.shiftKey; // Hold Shift for counter-clockwise
+    const quarterTurn = Math.PI / 2 * (ccw ? -1 : 1);
+    const controls = game.controls;
+
+    // Face rotations
+    if (key === 'f') { // Front face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(0, 0, 1), axis: 'z', angle: quarterTurn });
+    } 
+    else if (key === 'b') { // Back face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(0, 0, -1), axis: 'z', angle: -quarterTurn });
+    } 
+    else if (key === 'r') { // Right face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(1, 0, 0), axis: 'x', angle: quarterTurn });
+    } 
+    else if (key === 'l') { // Left face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(-1, 0, 0), axis: 'x', angle: -quarterTurn });
+    } 
+    else if (key === 'u') { // Up face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(0, 1, 0), axis: 'y', angle: quarterTurn });
+    } 
+    else if (key === 'd') { // Down face
+        controls.keyboardMove('LAYER', { position: new THREE.Vector3(0, -1, 0), axis: 'y', angle: -quarterTurn });
+    }
+
+    // Whole cube rotations
+    else if (key === 'x') {
+        controls.keyboardMove('CUBE', { axis: 'x', angle: quarterTurn });
+    } 
+    else if (key === 'y') {
+        controls.keyboardMove('CUBE', { axis: 'y', angle: quarterTurn });
+    } 
+    else if (key === 'z') {
+        controls.keyboardMove('CUBE', { axis: 'z', angle: quarterTurn });
+    }
+
+    // Actions
+    else if (event.code === 'Space') { 
+        event.preventDefault(); // prevent page scroll
+        game.scrambler.scramble(); 
+        controls.scrambleCube();
+    } 
+    else if (event.code === 'Enter') { 
+        game.cube.reset();
+        game.cube.init();
+    }
+});
+
     </script>
 </body>
 </html>
