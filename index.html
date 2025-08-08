@@ -4571,6 +4571,66 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-    </script>
+</script>
+<style>
+#cube-controls {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 170px;       
+    height: 320px;      
+    background: rgba(20, 20, 20, 0.9); /* dark, almost opaque */
+    backdrop-filter: blur(50px);       /* strong blur */
+    -webkit-backdrop-filter: blur(50px);
+    padding: 1.5rem;
+    border-radius: 1.2rem;             /* rounder corners */
+    font-family: Arial, sans-serif;
+    font-size: 2rem;  
+    line-height: 1.8;
+    color: #fff;                       /* white text for dark bg */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    z-index: 999999;
+    pointer-events: none;
+}
+#cube-controls h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 2rem; 
+    border-bottom: 2px solid rgba(255,255,255,0.15); /* lighter divider */
+    padding-bottom: 0.4rem;
+}
+#cube-controls code {
+    background: rgba(255, 255, 255, 0.15); /* light glass behind keys */
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.4rem;
+    font-family: monospace;
+    font-size: 3rem; 
+    color: #fff;
+}
+</style>
+
+<div id="cube-controls">
+    <div>
+        <h3>Cube Controls</h3>
+        <b>Face Rotations:</b><br>
+        <code class="code-F">F</code> Front &nbsp; 
+        <code class="code-B">B</code> Back<br>
+        <code class="code-R">R</code> Right &nbsp; 
+        <code class="code-L">L</code> Left<br>
+        <code class="code-U">U</code> Up &nbsp; 
+        <code class="code-D">D</code> Down<br><br>
+
+        <b>Cube Rotations:</b><br>
+        <code class="code-X">X</code> X-axis &nbsp; 
+        <code class="code-Y">Y</code> Y-axis &nbsp; 
+        <code class="code-Z">Z</code> Z-axis<br><br>
+
+        <b>Actions:</b><br>
+        <code class="code-Space">Space</code> Scramble<br>
+        <code class="code-Enter">Enter</code> Reset<br>
+        <code class="code-Shift">Shift</code> Counter-clockwise
+        <code class="code-Shift">Settings</code> in right corner.
+    </div>
+</div>
+
 </body>
 </html>
